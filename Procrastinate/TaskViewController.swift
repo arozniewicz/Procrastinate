@@ -41,7 +41,12 @@ class TaskViewController: UIViewController, MVVMViewController {
         self.tableView.rx.itemSelected
             .subscribe(onNext: { [unowned self] indexPath in self.tableView.deselectRow(at: indexPath, animated: true)})
             .addDisposableTo(self.disposeBag)
-                
+        
+        self.viewModel.showLeftBarButton.asObservable()
+            .filter { !$0 }
+            .subscribe(onNext: { [unowned self] _ in self.navigationItem.leftBarButtonItem = nil })
+            .addDisposableTo(self.disposeBag)
+        
         self.navigationItem.leftBarButtonItem?.rx.tap
             .subscribe(onNext: self.viewModel.cancel)
             .addDisposableTo(self.disposeBag)
@@ -79,6 +84,7 @@ class TaskViewModel: ViewModel {
     }()
     
     let title = Variable("")
+    let showLeftBarButton = Variable(true)
     
     var navigator: Navigator!
     
@@ -159,6 +165,7 @@ class EditTaskViewModel: TaskViewModel {
         super.init(description: task.taskDescription, deadline: task.deadline, repeatDays: task.repeats.intValue)
         
         self.title.value = "Edit task"
+        self.showLeftBarButton.value = false
     }
     
     override func saveTask() {
