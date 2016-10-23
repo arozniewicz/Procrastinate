@@ -7,14 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		382F81B11DA963CE00F4E77B /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382F81B01DA963CE00F4E77B /* TaskViewController.swift */; };
 		388F4E651DA8F97000A4F765 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388F4E641DA8F97000A4F765 /* AppDelegate.swift */; };
-		388F4E671DA8F97000A4F765 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388F4E661DA8F97000A4F765 /* ViewController.swift */; };
+		388F4E671DA8F97000A4F765 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388F4E661DA8F97000A4F765 /* TasksViewController.swift */; };
 		388F4E6A1DA8F97000A4F765 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 388F4E681DA8F97000A4F765 /* Main.storyboard */; };
 		388F4E6D1DA8F97100A4F765 /* Procrastinate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 388F4E6B1DA8F97100A4F765 /* Procrastinate.xcdatamodeld */; };
 		388F4E6F1DA8F97100A4F765 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 388F4E6E1DA8F97100A4F765 /* Assets.xcassets */; };
 		388F4E721DA8F97100A4F765 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 388F4E701DA8F97100A4F765 /* LaunchScreen.storyboard */; };
 		388F4E7D1DA8F97100A4F765 /* ProcrastinateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388F4E7C1DA8F97100A4F765 /* ProcrastinateTests.swift */; };
 		388F4E881DA8F97100A4F765 /* ProcrastinateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388F4E871DA8F97100A4F765 /* ProcrastinateUITests.swift */; };
+		38AD11D21DAA3A7600D7F491 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AD11D11DAA3A7600D7F491 /* SettingTableViewCell.swift */; };
+		38AD11D41DAA47DB00D7F491 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AD11D31DAA47DB00D7F491 /* Operators.swift */; };
+		38D24B5D1DBBB823005F8BD4 /* ProcrastinateDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D24B5C1DBBB823005F8BD4 /* ProcrastinateDatabase.swift */; };
+		38D24B5F1DBBC106005F8BD4 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D24B5E1DBBC106005F8BD4 /* Navigator.swift */; };
+		38D24B611DBBD3F9005F8BD4 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D24B601DBBD3F9005F8BD4 /* ViewModel.swift */; };
+		38D24B631DBBD412005F8BD4 /* MVVMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D24B621DBBD412005F8BD4 /* MVVMViewController.swift */; };
+		38D24B651DBBD92F005F8BD4 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D24B641DBBD92F005F8BD4 /* TaskTableViewCell.swift */; };
+		38D24B711DBBE1CC005F8BD4 /* UITableView+Rx+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D24B701DBBE1CC005F8BD4 /* UITableView+Rx+Model.swift */; };
+		38D24B731DBC0B63005F8BD4 /* Date+Procrastinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D24B721DBC0B63005F8BD4 /* Date+Procrastinate.swift */; };
+		38D24B751DBC0B84005F8BD4 /* Array+Procrastinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D24B741DBC0B84005F8BD4 /* Array+Procrastinate.swift */; };
+		38E79AC21DB371EC00415E27 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E79AC11DB371EC00415E27 /* Task.swift */; };
+		ED998193964623A8BE59F1AA /* Pods_Procrastinate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B32B5BE2612180C8A5898A63 /* Pods_Procrastinate.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +48,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		382F81B01DA963CE00F4E77B /* TaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		388F4E611DA8F97000A4F765 /* Procrastinate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Procrastinate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		388F4E641DA8F97000A4F765 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		388F4E661DA8F97000A4F765 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		388F4E661DA8F97000A4F765 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		388F4E691DA8F97000A4F765 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		388F4E6C1DA8F97100A4F765 /* Procrastinate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Procrastinate.xcdatamodel; sourceTree = "<group>"; };
 		388F4E6E1DA8F97100A4F765 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +63,20 @@
 		388F4E831DA8F97100A4F765 /* ProcrastinateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProcrastinateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		388F4E871DA8F97100A4F765 /* ProcrastinateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcrastinateUITests.swift; sourceTree = "<group>"; };
 		388F4E891DA8F97100A4F765 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		38AD11D11DAA3A7600D7F491 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		38AD11D31DAA47DB00D7F491 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		38D24B5C1DBBB823005F8BD4 /* ProcrastinateDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcrastinateDatabase.swift; sourceTree = "<group>"; };
+		38D24B5E1DBBC106005F8BD4 /* Navigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
+		38D24B601DBBD3F9005F8BD4 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		38D24B621DBBD412005F8BD4 /* MVVMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MVVMViewController.swift; path = ../MVVMViewController.swift; sourceTree = "<group>"; };
+		38D24B641DBBD92F005F8BD4 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		38D24B701DBBE1CC005F8BD4 /* UITableView+Rx+Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Rx+Model.swift"; sourceTree = "<group>"; };
+		38D24B721DBC0B63005F8BD4 /* Date+Procrastinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Procrastinate.swift"; sourceTree = "<group>"; };
+		38D24B741DBC0B84005F8BD4 /* Array+Procrastinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Procrastinate.swift"; sourceTree = "<group>"; };
+		38E79AC11DB371EC00415E27 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		A5091CBFB6490E03065971F5 /* Pods-Procrastinate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Procrastinate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Procrastinate/Pods-Procrastinate.debug.xcconfig"; sourceTree = "<group>"; };
+		B32B5BE2612180C8A5898A63 /* Pods_Procrastinate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Procrastinate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFEB59CC5279B1CB4DBE5433 /* Pods-Procrastinate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Procrastinate.release.xcconfig"; path = "Pods/Target Support Files/Pods-Procrastinate/Pods-Procrastinate.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED998193964623A8BE59F1AA /* Pods_Procrastinate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +105,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		032279D766CFBF732D2B903C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A5091CBFB6490E03065971F5 /* Pods-Procrastinate.debug.xcconfig */,
+				DFEB59CC5279B1CB4DBE5433 /* Pods-Procrastinate.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		388F4E581DA8F97000A4F765 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +121,8 @@
 				388F4E7B1DA8F97100A4F765 /* ProcrastinateTests */,
 				388F4E861DA8F97100A4F765 /* ProcrastinateUITests */,
 				388F4E621DA8F97000A4F765 /* Products */,
+				032279D766CFBF732D2B903C /* Pods */,
+				4C5E74D38948CBA6E06867C5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +139,13 @@
 		388F4E631DA8F97000A4F765 /* Procrastinate */ = {
 			isa = PBXGroup;
 			children = (
+				38D24B6E1DBBDFE9005F8BD4 /* Extensions */,
+				38D24B661DBBDF1F005F8BD4 /* Model */,
+				38D24B6F1DBBE011005F8BD4 /* Navigator */,
+				38D24B6B1DBBDFB3005F8BD4 /* Resources */,
+				38D24B681DBBDF83005F8BD4 /* ViewModel */,
 				388F4E641DA8F97000A4F765 /* AppDelegate.swift */,
-				388F4E661DA8F97000A4F765 /* ViewController.swift */,
-				388F4E681DA8F97000A4F765 /* Main.storyboard */,
-				388F4E6E1DA8F97100A4F765 /* Assets.xcassets */,
-				388F4E701DA8F97100A4F765 /* LaunchScreen.storyboard */,
 				388F4E731DA8F97100A4F765 /* Info.plist */,
-				388F4E6B1DA8F97100A4F765 /* Procrastinate.xcdatamodeld */,
 			);
 			path = Procrastinate;
 			sourceTree = "<group>";
@@ -128,6 +168,106 @@
 			path = ProcrastinateUITests;
 			sourceTree = "<group>";
 		};
+		38D24B661DBBDF1F005F8BD4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				38D24B671DBBDF37005F8BD4 /* Entities */,
+				38D24B5C1DBBB823005F8BD4 /* ProcrastinateDatabase.swift */,
+				388F4E6B1DA8F97100A4F765 /* Procrastinate.xcdatamodeld */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		38D24B671DBBDF37005F8BD4 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				38E79AC11DB371EC00415E27 /* Task.swift */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
+		38D24B681DBBDF83005F8BD4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				38D24B691DBBDF99005F8BD4 /* Cells */,
+				38D24B6A1DBBDFA5005F8BD4 /* ViewControllers */,
+				38D24B621DBBD412005F8BD4 /* MVVMViewController.swift */,
+				38D24B601DBBD3F9005F8BD4 /* ViewModel.swift */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		38D24B691DBBDF99005F8BD4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				38AD11D11DAA3A7600D7F491 /* SettingTableViewCell.swift */,
+				38D24B641DBBD92F005F8BD4 /* TaskTableViewCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		38D24B6A1DBBDFA5005F8BD4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				388F4E661DA8F97000A4F765 /* TasksViewController.swift */,
+				382F81B01DA963CE00F4E77B /* TaskViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		38D24B6B1DBBDFB3005F8BD4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				38D24B6C1DBBDFC3005F8BD4 /* Assets */,
+				38D24B6D1DBBDFC9005F8BD4 /* Storyboards */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		38D24B6C1DBBDFC3005F8BD4 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				388F4E6E1DA8F97100A4F765 /* Assets.xcassets */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		38D24B6D1DBBDFC9005F8BD4 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				388F4E701DA8F97100A4F765 /* LaunchScreen.storyboard */,
+				388F4E681DA8F97000A4F765 /* Main.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		38D24B6E1DBBDFE9005F8BD4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				38D24B741DBC0B84005F8BD4 /* Array+Procrastinate.swift */,
+				38D24B721DBC0B63005F8BD4 /* Date+Procrastinate.swift */,
+				38AD11D31DAA47DB00D7F491 /* Operators.swift */,
+				38D24B701DBBE1CC005F8BD4 /* UITableView+Rx+Model.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		38D24B6F1DBBE011005F8BD4 /* Navigator */ = {
+			isa = PBXGroup;
+			children = (
+				38D24B5E1DBBC106005F8BD4 /* Navigator.swift */,
+			);
+			name = Navigator;
+			sourceTree = "<group>";
+		};
+		4C5E74D38948CBA6E06867C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B32B5BE2612180C8A5898A63 /* Pods_Procrastinate.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +275,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 388F4E8C1DA8F97100A4F765 /* Build configuration list for PBXNativeTarget "Procrastinate" */;
 			buildPhases = (
+				4CD1B01E570BB6F206EF9F34 /* [CP] Check Pods Manifest.lock */,
 				388F4E5D1DA8F97000A4F765 /* Sources */,
 				388F4E5E1DA8F97000A4F765 /* Frameworks */,
 				388F4E5F1DA8F97000A4F765 /* Resources */,
+				E1A3B45982663FC221EF67A3 /* [CP] Embed Pods Frameworks */,
+				39934D1BEF1F75A120DADA4C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -260,14 +403,74 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		39934D1BEF1F75A120DADA4C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Procrastinate/Pods-Procrastinate-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4CD1B01E570BB6F206EF9F34 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E1A3B45982663FC221EF67A3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Procrastinate/Pods-Procrastinate-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		388F4E5D1DA8F97000A4F765 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38D24B611DBBD3F9005F8BD4 /* ViewModel.swift in Sources */,
 				388F4E6D1DA8F97100A4F765 /* Procrastinate.xcdatamodeld in Sources */,
-				388F4E671DA8F97000A4F765 /* ViewController.swift in Sources */,
+				382F81B11DA963CE00F4E77B /* TaskViewController.swift in Sources */,
+				38D24B5F1DBBC106005F8BD4 /* Navigator.swift in Sources */,
+				38D24B5D1DBBB823005F8BD4 /* ProcrastinateDatabase.swift in Sources */,
+				388F4E671DA8F97000A4F765 /* TasksViewController.swift in Sources */,
+				38D24B631DBBD412005F8BD4 /* MVVMViewController.swift in Sources */,
+				38AD11D21DAA3A7600D7F491 /* SettingTableViewCell.swift in Sources */,
+				38D24B751DBC0B84005F8BD4 /* Array+Procrastinate.swift in Sources */,
+				38D24B651DBBD92F005F8BD4 /* TaskTableViewCell.swift in Sources */,
+				38D24B711DBBE1CC005F8BD4 /* UITableView+Rx+Model.swift in Sources */,
 				388F4E651DA8F97000A4F765 /* AppDelegate.swift in Sources */,
+				38E79AC21DB371EC00415E27 /* Task.swift in Sources */,
+				38AD11D41DAA47DB00D7F491 /* Operators.swift in Sources */,
+				38D24B731DBC0B63005F8BD4 /* Date+Procrastinate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +618,7 @@
 		};
 		388F4E8D1DA8F97100A4F765 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5091CBFB6490E03065971F5 /* Pods-Procrastinate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5H7ZRX2J9H;
@@ -428,6 +632,7 @@
 		};
 		388F4E8E1DA8F97100A4F765 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFEB59CC5279B1CB4DBE5433 /* Pods-Procrastinate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5H7ZRX2J9H;
@@ -516,6 +721,7 @@
 				388F4E8E1DA8F97100A4F765 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		388F4E8F1DA8F97100A4F765 /* Build configuration list for PBXNativeTarget "ProcrastinateTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +730,7 @@
 				388F4E911DA8F97100A4F765 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		388F4E921DA8F97100A4F765 /* Build configuration list for PBXNativeTarget "ProcrastinateUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +739,7 @@
 				388F4E941DA8F97100A4F765 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
