@@ -28,6 +28,11 @@ class TasksViewController: UIViewController, UITableViewDelegate, MVVMViewContro
         self.tableView.delegate = self
         self.tableView.register(TaskTableViewCell.self, forCellReuseIdentifier: "task")
         
+        NotificationCenter.default.rx.notification(NSNotification.Name.UIApplicationWillEnterForeground)
+            .map { _ in () }
+            .bindNext(self.viewModel.fetchTasks)
+            .addDisposableTo(self.disposeBag)
+        
         bindViewModel()
     }
     
@@ -43,15 +48,15 @@ class TasksViewController: UIViewController, UITableViewDelegate, MVVMViewContro
             .addDisposableTo(self.disposeBag)
         
         self.tableView.rx.modelSelected(TaskCellViewModel.self)
-            .subscribe(onNext: { [unowned self] taskViewModel in self.viewModel.complete(taskViewModel: taskViewModel) })
+            .bindNext(self.viewModel.complete)
             .addDisposableTo(self.disposeBag)
         
         self.tableView.rx.modelAccessoryButtonTapped(TaskCellViewModel.self)
-            .subscribe(onNext: { [unowned self] taskViewModel in self.viewModel.showTaskDetails(taskViewModel: taskViewModel) })
+            .bindNext(self.viewModel.showTaskDetails)
             .addDisposableTo(self.disposeBag)
         
         self.tableView.rx.modelDeleted(TaskCellViewModel.self)
-            .subscribe(onNext: { [unowned self] taskViewModel in self.viewModel.delete(taskViewModel: taskViewModel) })
+            .bindNext(self.viewModel.delete)
             .addDisposableTo(self.disposeBag)
         
         self.tableView.rx.itemSelected
@@ -59,12 +64,12 @@ class TasksViewController: UIViewController, UITableViewDelegate, MVVMViewContro
             .addDisposableTo(self.disposeBag)
         
         self.navigationItem.leftBarButtonItem?.rx.tap
-            .subscribe(onNext: { [unowned self] _ in self.viewModel.undo() })
+            .bindNext(self.viewModel.undo)
             .addDisposableTo(self.disposeBag)
-    }
-    
-    @IBAction func onNewTaskBarButtonItemTouch(_ sender: AnyObject) {
-        self.viewModel.showNewTask()
+        
+        self.navigationItem.rightBarButtonItem?.rx.tap
+            .bindNext(self.viewModel.showNewTask)
+            .addDisposableTo(self.disposeBag)
     }
     
 }
