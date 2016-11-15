@@ -11,91 +11,18 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 
-class TextTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var valueTextField: UITextField!
-    
-    var viewModel: TextSettingViewModel? {
-        didSet {
-            self.disposeBag = DisposeBag()
-            
-            createBindings()
-        }
-    }
-    
-    var disposeBag = DisposeBag()
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        if selected {
-            self.valueTextField.becomeFirstResponder()
-        }
-    }
-    
-    private func createBindings() {
-        guard let viewModel = self.viewModel else {
-            return
-        }
-        
-        viewModel.title.asObservable()
-            .bindTo(self.titleLabel.rx.text)
-            .addDisposableTo(self.disposeBag)
-        
-        (self.valueTextField.rx.textInput <-> viewModel.textValue).addDisposableTo(self.disposeBag)
-    }
-    
-}
-
-class NumberTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var valueTextField: UITextField!
-    
-    var viewModel: NumberSettingViewModel? {
-        didSet {
-            self.disposeBag = DisposeBag()
-            
-            createBindings()
-        }
-    }
-    
-    var disposeBag = DisposeBag()
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        if selected {
-            self.valueTextField.becomeFirstResponder()
-        }
-    }
-    
-    private func createBindings() {
-        guard let viewModel = self.viewModel else {
-            return
-        }
-        
-        viewModel.title.asObservable()
-            .bindTo(self.titleLabel.rx.text)
-            .addDisposableTo(self.disposeBag)
-        
-        (self.valueTextField.rx.textInput <-> viewModel.textValue).addDisposableTo(self.disposeBag)
-    }
-    
-}
-
-class DateTableViewCell: UITableViewCell {
+class SettingTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var valueTextField: UITextField!
     
-    var viewModel: DateSettingViewModel? {
+    var viewModel: SettingViewModel? {
         didSet {
             self.disposeBag = DisposeBag()
             
-            createBindings()
+            self.viewModel?.configureCell(cell: self)
+            self.viewModel?.bindViewModelToCell(cell: self)
         }
     }
     
@@ -108,12 +35,10 @@ class DateTableViewCell: UITableViewCell {
         return datePicker
     }()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        self.valueTextField.inputView = self.datePicker
-        self.valueTextField.isHidden = true
-    }
+    lazy var pickerView: UIPickerView = {
+        let pickerView = UIPickerView()
+        return pickerView
+    }()
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -123,32 +48,16 @@ class DateTableViewCell: UITableViewCell {
         }
     }
     
-    private func createBindings() {
-        guard let viewModel = self.viewModel else {
-            return
-        }
-        
-        viewModel.title.asObservable()
-            .bindTo(self.titleLabel.rx.text)
-            .addDisposableTo(self.disposeBag)
-        
-        viewModel.textValue.asObservable()
-            .map { $0 as String? }
-            .bindTo(self.valueLabel.rx.text)
-            .addDisposableTo(self.disposeBag)
-        
-        (self.datePicker.rx.date <-> viewModel.dateValue).addDisposableTo(self.disposeBag)
-    }
-    
 }
 
 protocol SettingViewModel {
-        
-    func dequeueCell(tableView: UITableView, forIndexPath indexPath: IndexPath) -> UITableViewCell
+    
+    func bindViewModelToCell(cell: SettingTableViewCell)
+    func configureCell(cell: SettingTableViewCell)
     
 }
 
-class TextSettingViewModel: SettingViewModel {
+class TextSettingViewModel: NSObject, SettingViewModel {
     
     let title: Variable<String?>
     let textValue: Variable<String>
@@ -158,14 +67,16 @@ class TextSettingViewModel: SettingViewModel {
         self.textValue = Variable(text)
     }
     
-    func dequeueCell(tableView: UITableView, forIndexPath indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath)
+    func bindViewModelToCell(cell: SettingTableViewCell) {
+        self.title.asObservable()
+            .bindTo(cell.titleLabel.rx.text)
+            .addDisposableTo(cell.disposeBag)
         
-        if let cell = cell as? TextTableViewCell {
-            cell.viewModel = self
-        }
-        
-        return cell
+        (cell.valueTextField.rx.textInput <-> self.textValue).addDisposableTo(cell.disposeBag)
+    }
+    
+    func configureCell(cell: SettingTableViewCell) {
+        cell.valueLabel.isHidden = true
     }
     
 }
@@ -197,14 +108,9 @@ class NumberSettingViewModel: TextSettingViewModel {
         Disposables.create(textToNumber, numberToText).addDisposableTo(self.disposeBag)
     }
     
-    override func dequeueCell(tableView: UITableView, forIndexPath indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NumberCell", for: indexPath)
-        
-        if let cell = cell as? NumberTableViewCell {
-            cell.viewModel = self
-        }
-        
-        return cell
+    override func configureCell(cell: SettingTableViewCell) {
+        cell.valueLabel.isHidden = true
+        cell.valueTextField.keyboardType = .numberPad
     }
     
 }
@@ -234,14 +140,109 @@ class DateSettingViewModel: TextSettingViewModel {
             .addDisposableTo(self.disposeBag)
     }
     
-    override func dequeueCell(tableView: UITableView, forIndexPath indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DateCell", for: indexPath)
+    override func bindViewModelToCell(cell: SettingTableViewCell) {
+        self.title.asObservable()
+            .bindTo(cell.titleLabel.rx.text)
+            .addDisposableTo(cell.disposeBag)
         
-        if let cell = cell as? DateTableViewCell {
-            cell.viewModel = self
+        self.textValue.asObservable()
+            .map { $0 as String? }
+            .bindTo(cell.valueLabel.rx.text)
+            .addDisposableTo(cell.disposeBag)
+        
+        (cell.datePicker.rx.date <-> self.dateValue).addDisposableTo(cell.disposeBag)
+    }
+    
+    override func configureCell(cell: SettingTableViewCell) {
+        cell.valueTextField.inputView = cell.datePicker
+        cell.valueTextField.isHidden = true
+    }
+    
+}
+
+class PickerSettingViewModel: TextSettingViewModel, UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    let frequencyValue: Variable<TaskFrequency>
+    
+    let values: [TaskFrequency] = [.once, .daily, .weekly, .monthly, .yearly]
+    
+    private let disposeBag = DisposeBag()
+    
+    init(title: String, frequency: TaskFrequency) {
+        self.frequencyValue = Variable(frequency)
+        
+        super.init(title: title, text: "")
+        
+        self.frequencyValue.asObservable()
+            .map { $0.stringValue }
+            .bindTo(self.textValue)
+            .addDisposableTo(self.disposeBag)
+    }
+    
+    override func bindViewModelToCell(cell: SettingTableViewCell) {
+        cell.pickerView.dataSource = self
+        cell.pickerView.delegate = self
+        
+        cell.pickerView.selectRow(self.values.index(of: self.frequencyValue.value) ?? 0, inComponent: 0, animated: false)
+        
+        self.title.asObservable()
+            .bindTo(cell.titleLabel.rx.text)
+            .addDisposableTo(cell.disposeBag)
+        
+        self.textValue.asObservable()
+            .map { $0 as String? }
+            .bindTo(cell.valueLabel.rx.text)
+            .addDisposableTo(cell.disposeBag)
+        
+        cell.pickerView.rx.itemSelected
+            .subscribe(onNext: self.pickValue)
+            .addDisposableTo(cell.disposeBag)
+    }
+    
+    override func configureCell(cell: SettingTableViewCell) {
+        cell.valueTextField.inputView = cell.pickerView
+        cell.valueTextField.isHidden = true
+    }
+    
+    func pickValue(row: Int, _: Int) {
+        self.frequencyValue.value = self.values[row]
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.values.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return self.values[row].stringValue
+    }
+    
+}
+
+private extension TaskFrequency {
+    
+    var stringValue: String {
+        switch self {
+        case .once: return "Once"
+        case .daily: return "Daily"
+        case .weekly: return "Weekly"
+        case .monthly: return "Monthly"
+        case .yearly: return "Yearly"
         }
-        
-        return cell
+    }
+    
+    static func fromString(string: String) -> TaskFrequency {
+        switch string {
+        case "Once": return TaskFrequency.once
+        case "Daily": return TaskFrequency.daily
+        case "Weekly": return TaskFrequency.weekly
+        case "Monthly": return TaskFrequency.monthly
+        case "Yearly": return TaskFrequency.yearly
+        default: return .once
+        }
     }
     
 }

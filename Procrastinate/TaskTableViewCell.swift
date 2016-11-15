@@ -76,10 +76,24 @@ class TaskCellViewModel: IdentifiableType, Equatable {
 private extension Task {
     
     var repeatsString: String {
-        switch self.repeats {
+        switch self.repeatsEvery {
         case 0: return "Once"
-        case 1: return "Repeats every day"
-        default: return "Repeats every \(self.repeats) days"
+        case 1: return "Repeats every \(self.frequencyEnum.string(times: 1))"
+        default: return "Repeats every \(self.repeatsEvery.intValue) \(self.frequencyEnum.string(times: self.repeatsEvery.intValue))"
+        }
+    }
+    
+}
+
+private extension TaskFrequency {
+    
+    func string(times: Int) -> String {
+        switch self {
+        case .once: return "Once"
+        case .daily: return times == 1 ? "day" : "days"
+        case .weekly: return times == 1 ? "week" : "weeks"
+        case .monthly: return times == 1 ? "month" : "months"
+        case .yearly: return times == 1 ? "year" : "years"
         }
     }
     

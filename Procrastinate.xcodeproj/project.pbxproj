@@ -26,6 +26,7 @@
 		38D24B711DBBE1CC005F8BD4 /* UITableView+Rx+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D24B701DBBE1CC005F8BD4 /* UITableView+Rx+Model.swift */; };
 		38D24B731DBC0B63005F8BD4 /* Date+Procrastinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D24B721DBC0B63005F8BD4 /* Date+Procrastinate.swift */; };
 		38D24B751DBC0B84005F8BD4 /* Array+Procrastinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D24B741DBC0B84005F8BD4 /* Array+Procrastinate.swift */; };
+		38D24B771DBCBB4A005F8BD4 /* TaskFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D24B761DBCBB4A005F8BD4 /* TaskFrequency.swift */; };
 		38E79AC21DB371EC00415E27 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E79AC11DB371EC00415E27 /* Task.swift */; };
 		ED998193964623A8BE59F1AA /* Pods_Procrastinate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B32B5BE2612180C8A5898A63 /* Pods_Procrastinate.framework */; };
 /* End PBXBuildFile section */
@@ -73,6 +74,7 @@
 		38D24B701DBBE1CC005F8BD4 /* UITableView+Rx+Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Rx+Model.swift"; sourceTree = "<group>"; };
 		38D24B721DBC0B63005F8BD4 /* Date+Procrastinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Procrastinate.swift"; sourceTree = "<group>"; };
 		38D24B741DBC0B84005F8BD4 /* Array+Procrastinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Procrastinate.swift"; sourceTree = "<group>"; };
+		38D24B761DBCBB4A005F8BD4 /* TaskFrequency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFrequency.swift; sourceTree = "<group>"; };
 		38E79AC11DB371EC00415E27 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		A5091CBFB6490E03065971F5 /* Pods-Procrastinate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Procrastinate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Procrastinate/Pods-Procrastinate.debug.xcconfig"; sourceTree = "<group>"; };
 		B32B5BE2612180C8A5898A63 /* Pods_Procrastinate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Procrastinate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				38E79AC11DB371EC00415E27 /* Task.swift */,
+				38D24B761DBCBB4A005F8BD4 /* TaskFrequency.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				38D24B611DBBD3F9005F8BD4 /* ViewModel.swift in Sources */,
 				388F4E6D1DA8F97100A4F765 /* Procrastinate.xcdatamodeld in Sources */,
 				382F81B11DA963CE00F4E77B /* TaskViewController.swift in Sources */,
+				38D24B771DBCBB4A005F8BD4 /* TaskFrequency.swift in Sources */,
 				38D24B5F1DBBC106005F8BD4 /* Navigator.swift in Sources */,
 				38D24B5D1DBBB823005F8BD4 /* ProcrastinateDatabase.swift in Sources */,
 				388F4E671DA8F97000A4F765 /* TasksViewController.swift in Sources */,

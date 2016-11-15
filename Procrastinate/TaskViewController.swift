@@ -73,7 +73,13 @@ class TaskViewModel: ViewModel {
         let dataSource = TaskDetailsDataSource()
         
         dataSource.configureCell = { (dataSouce, tableView, indexPath, viewModel) in
-            return viewModel.dequeueCell(tableView: tableView, forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath)
+            
+            if let cell = cell as? SettingTableViewCell {
+                cell.viewModel = viewModel
+            }
+            
+            return cell
         }
         
         dataSource.titleForHeaderInSection = { (dataSource, section) in
@@ -92,19 +98,25 @@ class TaskViewModel: ViewModel {
     
     private let descriptionSetting: TextSettingViewModel
     private let deadlineSetting: DateSettingViewModel
+    private let frequencySetting: PickerSettingViewModel
     private let repeatDaysSetting: NumberSettingViewModel
     
     convenience init() {
-        self.init(description: "", deadline: Date(), repeatDays: 0)
+        self.init(description: "", deadline: Date(), frequency: .once, repeatDays: 0)
     }
     
-    init(description: String, deadline: Date, repeatDays: Int) {
+    init(description: String, deadline: Date, frequency: TaskFrequency, repeatDays: Int) {
         self.descriptionSetting = TextSettingViewModel(title: "Description", text: description)
         self.deadlineSetting = DateSettingViewModel(title: "Deadline", date: deadline)
-        self.repeatDaysSetting = NumberSettingViewModel(title: "Repeat days", number: repeatDays)
+        self.frequencySetting = PickerSettingViewModel(title: "Frequency", frequency: frequency)
+        self.repeatDaysSetting = NumberSettingViewModel(title: "Repeats interval", number: repeatDays)
         
         self.data.value = [
-            TaskDetailsSection(model: "", items: [self.descriptionSetting, self.deadlineSetting, self.repeatDaysSetting])
+            TaskDetailsSection(model: "", items: [
+                self.descriptionSetting,
+                self.deadlineSetting,
+                self.frequencySetting,
+                self.repeatDaysSetting])
         ]
     }
     
@@ -114,6 +126,10 @@ class TaskViewModel: ViewModel {
     
     func getDeadline() -> Date {
         return self.deadlineSetting.dateValue.value
+    }
+    
+    func getFrequency() -> TaskFrequency {
+        return self.frequencySetting.frequencyValue.value
     }
     
     func getRepeatDays() -> Int {
@@ -133,7 +149,7 @@ class TaskViewModel: ViewModel {
 class NewTaskViewModel: TaskViewModel {
     
     init() {
-        super.init(description: "", deadline: Date(), repeatDays: 0)
+        super.init(description: "", deadline: Date(), frequency: .once, repeatDays: 0)
         
         self.title.value = "New task"
     }
@@ -142,7 +158,8 @@ class NewTaskViewModel: TaskViewModel {
         let newTask = Task(context: self.database.mainContext)
         newTask.taskDescription = getDescription()
         newTask.deadline = getDeadline()
-        newTask.repeats = NSNumber(integerLiteral: getRepeatDays())
+        newTask.frequencyEnum = getFrequency()
+        newTask.repeatsEvery = NSNumber(integerLiteral: getRepeatDays())
         
         self.database.saveContext()
         
@@ -162,7 +179,7 @@ class EditTaskViewModel: TaskViewModel {
     init(task: Task) {
         self.task = task
         
-        super.init(description: task.taskDescription, deadline: task.deadline, repeatDays: task.repeats.intValue)
+        super.init(description: task.taskDescription, deadline: task.deadline, frequency: task.frequencyEnum, repeatDays: task.repeatsEvery.intValue)
         
         self.title.value = "Edit task"
         self.showLeftBarButton.value = false
@@ -171,7 +188,8 @@ class EditTaskViewModel: TaskViewModel {
     override func saveTask() {
         self.task.taskDescription = getDescription()
         self.task.deadline = getDeadline()
-        self.task.repeats = NSNumber(integerLiteral: getRepeatDays())
+        self.task.frequencyEnum = getFrequency()
+        self.task.repeatsEvery = NSNumber(integerLiteral: getRepeatDays())
         
         self.database.saveContext()
         

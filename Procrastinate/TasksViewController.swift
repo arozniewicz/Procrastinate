@@ -154,13 +154,13 @@ class TasksViewModel: ViewModel {
     func complete(taskViewModel: TaskCellViewModel) {
         let task = taskViewModel.task
         
-        guard task.repeats.intValue > 0 else {
+        guard task.frequencyEnum != .once else {
             delete(taskViewModel: taskViewModel)
             
             return
         }
         
-        task.deadline = task.deadline.adding(days: task.repeats.intValue)
+        task.complete()
         
         self.database.saveContext()
         

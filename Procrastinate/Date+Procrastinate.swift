@@ -18,8 +18,16 @@ extension Date {
         return calendar.date(from: dateComponents) ?? self
     }
     
-    func adding(days: Int) -> Date {
-        return self.addingTimeInterval(TimeInterval(days) * 24.0 * 60.0 * 60.0)
+    func adding(days: Int = 0, weeks: Int = 0, months: Int = 0, years: Int = 0) -> Date {
+        let calendar = Calendar.current
+        
+        var dateComponents = DateComponents()
+        dateComponents.day = days
+        dateComponents.weekOfYear = weeks
+        dateComponents.month = months
+        dateComponents.year = years
+        
+        return calendar.date(byAdding: dateComponents, to: self) ?? self
     }
     
 }
