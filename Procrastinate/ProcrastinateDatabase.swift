@@ -22,6 +22,8 @@ class ProcrastinateDatabase {
             }
         })
         
+        container.viewContext.undoManager = UndoManager()
+        
         return container
     }()
     
@@ -43,6 +45,10 @@ class ProcrastinateDatabase {
             
             return []
         }
+    }
+    
+    func undo() {
+        self.mainContext.undo()
     }
     
     func delete(object: NSManagedObject) {

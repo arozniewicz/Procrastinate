@@ -13,8 +13,6 @@ import RxDataSources
 import CoreData
 
 class TasksViewController: UIViewController, UITableViewDelegate, MVVMViewController {
-
-    typealias ViewModelType = TasksViewModel
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -58,6 +56,10 @@ class TasksViewController: UIViewController, UITableViewDelegate, MVVMViewContro
         
         self.tableView.rx.itemSelected
             .subscribe(onNext: { [unowned self] indexPath in self.tableView.deselectRow(at: indexPath, animated: true) })
+            .addDisposableTo(self.disposeBag)
+        
+        self.navigationItem.leftBarButtonItem?.rx.tap
+            .subscribe(onNext: { [unowned self] _ in self.viewModel.undo() })
             .addDisposableTo(self.disposeBag)
     }
     
@@ -176,6 +178,13 @@ class TasksViewModel: ViewModel {
         let _ = self.tasks.remove(element: task)
         
         updateData()
+    }
+    
+    func undo() {
+        self.database.undo()
+        self.database.saveContext()
+        
+        fetchTasks()
     }
     
 }

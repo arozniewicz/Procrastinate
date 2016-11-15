@@ -180,11 +180,6 @@ class PickerSettingViewModel: TextSettingViewModel, UIPickerViewDataSource, UIPi
     }
     
     override func bindViewModelToCell(cell: SettingTableViewCell) {
-        cell.pickerView.dataSource = self
-        cell.pickerView.delegate = self
-        
-        cell.pickerView.selectRow(self.values.index(of: self.frequencyValue.value) ?? 0, inComponent: 0, animated: false)
-        
         self.title.asObservable()
             .bindTo(cell.titleLabel.rx.text)
             .addDisposableTo(cell.disposeBag)
@@ -202,6 +197,11 @@ class PickerSettingViewModel: TextSettingViewModel, UIPickerViewDataSource, UIPi
     override func configureCell(cell: SettingTableViewCell) {
         cell.valueTextField.inputView = cell.pickerView
         cell.valueTextField.isHidden = true
+        
+        cell.pickerView.dataSource = self
+        cell.pickerView.delegate = self
+        
+        cell.pickerView.selectRow(self.values.index(of: self.frequencyValue.value) ?? 0, inComponent: 0, animated: false)
     }
     
     func pickValue(row: Int, _: Int) {

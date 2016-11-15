@@ -12,8 +12,6 @@ import RxSwift
 import RxDataSources
 
 class TaskViewController: UIViewController, MVVMViewController {
-
-    typealias ViewModelType = TaskViewModel
     
     @IBOutlet weak var tableView: UITableView!
     
